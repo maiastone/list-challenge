@@ -1,0 +1,18 @@
+{
+  "name": "havenly-js-challenge",
+  "version": "1.0.0",
+  "description": "A technical javascript challenge",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Maia Stone",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
