@@ -29,7 +29,7 @@ describe('getDiffBetween function', () => {
       },
     ];
     const updatedList = [
-  // barb's name is changing
+      // barb's name is changing
       {
         id       : 1,
         name     : 'Barb',
@@ -63,7 +63,72 @@ describe('getDiffBetween function', () => {
         id       : 3,
         quantity : 8,
       },
+      {
+        type     : 'REMOVE',
+        id       : 2,
+      },
     ];
     assert.deepEqual(getDiffBetween(list, updatedList), output)
   });
+  it('should handle a deleted user', () => {
+    const list = [
+      {
+        id       : 1,
+        name     : 'Barbara',
+        quantity : 3,
+      },
+      {
+        id       : 2,
+        name     : 'Tom',
+        quantity : 0,
+      },
+      {
+        id       : 3,
+        name     : 'Sam',
+        quantity : 1,
+      },
+    ];
+    const updatedList = [
+      // barb's name is changing
+      {
+        id       : 1,
+        name     : 'Barb',
+        quantity : 3,
+      },
+
+      // sam's quantity is changing
+      {
+        quantity : 8,
+        name     : 'Sam',
+        id       : 3,
+      },
+
+      // tom has been deleted
+
+      // nelson is being added
+      {
+        name     : 'Nelson',
+        id       : 4,
+        quantity : 6,
+      },
+    ];
+    const output = [
+      {
+        type     : 'CHANGE',
+        id       : 1,
+        name     : 'Barb',
+      },
+      {
+        type     : 'CHANGE',
+        id       : 3,
+        quantity : 8,
+      },
+      {
+        type     : 'REMOVE',
+        id       : 2,
+      },
+    ];
+    assert.deepEqual(getDiffBetween(list, updatedList), output)
+  })
+
 });
