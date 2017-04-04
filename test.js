@@ -59,13 +59,19 @@ describe('getDiffBetween function', () => {
         name     : 'Barb',
       },
       {
-        type     : 'CHANGE',
         id       : 3,
         quantity : 8,
+        type     : 'CHANGE',
       },
       {
-        type     : 'REMOVE',
         id       : 2,
+        type     : 'REMOVE',
+      },
+      {
+        type     : 'ADD',
+        id       : 4,
+        name     : 'Nelson',
+        quantity : 6,
       },
     ];
     assert.deepEqual(getDiffBetween(list, updatedList), output)
@@ -119,16 +125,88 @@ describe('getDiffBetween function', () => {
         name     : 'Barb',
       },
       {
-        type     : 'CHANGE',
         id       : 3,
         quantity : 8,
+        type     : 'CHANGE',
       },
       {
-        type     : 'REMOVE',
         id       : 2,
+        type     : 'REMOVE',
+      },
+      {
+        type     : 'ADD',
+        id       : 4,
+        name     : 'Nelson',
+        quantity : 6,
       },
     ];
     assert.deepEqual(getDiffBetween(list, updatedList), output)
-  })
+  });
+  it('should handle an added user', () => {
+   const list = [
+     {
+       id       : 1,
+       name     : 'Barbara',
+       quantity : 3,
+     },
+     {
+       id       : 2,
+       name     : 'Tom',
+       quantity : 0,
+     },
+     {
+       id       : 3,
+       name     : 'Sam',
+       quantity : 1,
+     },
+   ];
+   const updatedList = [
+     // barb's name is changing
+     {
+       id       : 1,
+       name     : 'Barb',
+       quantity : 3,
+     },
+
+     // sam's quantity is changing
+     {
+       quantity : 8,
+       name     : 'Sam',
+       id       : 3,
+     },
+
+     // tom has been deleted
+
+     // nelson is being added
+     {
+       name     : 'Nelson',
+       id       : 4,
+       quantity : 6,
+     },
+   ];
+   const output = [
+     {
+       type     : 'CHANGE',
+       id       : 1,
+       name     : 'Barb',
+     },
+     {
+       id       : 3,
+       quantity : 8,
+       type     : 'CHANGE',
+     },
+     {
+       id       : 2,
+       type     : 'REMOVE',
+     },
+     {
+       type     : 'ADD',
+       id       : 4,
+       name     : 'Nelson',
+       quantity : 6,
+     },
+   ];
+   assert.deepEqual(getDiffBetween(list, updatedList), output)
+ });
 
 });
