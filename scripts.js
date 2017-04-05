@@ -45,6 +45,9 @@ const getDiffBetween = (list, updatedList) => {
       diffList.push(add);
     }
   }
+  diffList.sort((a,b) => {
+    return a.id - b.id;
+  });
   return diffList;
 };
 

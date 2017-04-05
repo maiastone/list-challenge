@@ -59,13 +59,13 @@ describe('getDiffBetween function', () => {
         name     : 'Barb',
       },
       {
+        id       : 2,
+        type     : 'REMOVE',
+      },
+      {
         id       : 3,
         quantity : 8,
         type     : 'CHANGE',
-      },
-      {
-        id       : 2,
-        type     : 'REMOVE',
       },
       {
         type     : 'ADD',
@@ -125,13 +125,13 @@ describe('getDiffBetween function', () => {
         name     : 'Barb',
       },
       {
+        id       : 2,
+        type     : 'REMOVE',
+      },
+      {
         id       : 3,
         quantity : 8,
         type     : 'CHANGE',
-      },
-      {
-        id       : 2,
-        type     : 'REMOVE',
       },
       {
         type     : 'ADD',
@@ -191,13 +191,13 @@ describe('getDiffBetween function', () => {
        name     : 'Barb',
      },
      {
+       id       : 2,
+       type     : 'REMOVE',
+     },
+     {
        id       : 3,
        quantity : 8,
        type     : 'CHANGE',
-     },
-     {
-       id       : 2,
-       type     : 'REMOVE',
      },
      {
        type     : 'ADD',
