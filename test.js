@@ -208,5 +208,4 @@ describe('getDiffBetween function', () => {
    ];
    assert.deepEqual(getDiffBetween(list, updatedList), output)
  });
-
 });

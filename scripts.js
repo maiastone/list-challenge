@@ -1,9 +1,10 @@
 const add = (num) => {
   return num + 2;
-}
+};
 
 const getDiffBetween = (list, updatedList) => {
   let diffList = [];
+
   for (let i = 0; i < list.length; i++) {
     for (let j = 0; j < updatedList.length; j++) {
       if (list[i].id === updatedList[j].id) {
@@ -20,32 +21,32 @@ const getDiffBetween = (list, updatedList) => {
        }
      }
   }
+
   for (let i = 0; i < list.length; i++) {
-    let found = updatedList.find(function(item) {
-      return item.id === list[i].id
+    let found = updatedList.find(item => {
+      return item.id === list[i].id;
     });
     if (typeof found === 'undefined') {
       let remove = {
         id: list[i].id,
         type: 'REMOVE'
-      }
-      diffList.push(remove)
+      };
+      diffList.push(remove);
     }
   }
+
   for (let i = 0; i < updatedList.length; i++) {
-    let found = list.find(function(item) {
-      return item.id === updatedList[i].id
+    let found = list.find(item => {
+      return item.id === updatedList[i].id;
     });
     if (typeof found === 'undefined') {
-      let add = Object.assign({}, updatedList[i])
-      add['type'] = 'ADD'
-      diffList.push(add)
+      let add = Object.assign({}, updatedList[i]);
+      add.type = 'ADD';
+      diffList.push(add);
     }
   }
   return diffList;
 };
-
-
 
 
 module.exports = { add, getDiffBetween };
